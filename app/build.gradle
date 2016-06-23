@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -30,4 +31,5 @@ dependencies {
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.google.android.gms:play-services:9.0.2'
     compile 'com.google.code.gson:gson:2.7'
+    compile 'com.android.support:multidex:1.0.1'
 }

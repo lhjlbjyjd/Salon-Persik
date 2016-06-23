@@ -1,11 +1,14 @@
 package ua.rodionov.salonpersik;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -19,6 +22,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -27,12 +31,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -46,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<News> news = new ArrayList<>();
     private int coins;
     private int newsCount;
+    private SharedPreferences sPref;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +65,32 @@ public class MainActivity extends AppCompatActivity {
 
         CLIENT_ID = Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.ANDROID_ID);
+
+        sPref = getPreferences(MODE_PRIVATE);
+        editor = sPref.edit();
+
+        if(sPref.getBoolean("firstLaunch", true)){
+            new QRCreationTask().execute();
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Добро пожаловать!")
+                    .setMessage("Данное приложение создано исключительно для вашего удобства." + '\n' + '\n' +
+                    "Клиентский номер не сбрасывается при переустановке приложения, это значит, что удалив и " +
+                            "установив приложение заново вы сохраните свой клиентский номер." + '\n' + '\n' + " ВНИМАНИЕ!  Перед обновлением/сбросом " +
+                            "системы во избежании проблем настоятельно рекомендуем вам записать ваш клиентский номер:" +'\n' +
+                    String.valueOf(CLIENT_ID))
+                    .setIcon(R.drawable.logo)
+                    .setCancelable(false)
+                    .setPositiveButton("Принять",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    editor.putBoolean("firstLaunch", false);
+                                    editor.apply();
+                                    dialog.cancel();
+                                }
+                            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
 
         new GetUserData().execute();
 
@@ -71,18 +108,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         CardView ZapisCardPhone = (CardView) findViewById(R.id.card_view_zapis_phone);
-        CardView OtherCall = (CardView)findViewById(R.id.card_view_other_1);
+        CardView OtherAbout = (CardView)findViewById(R.id.card_view_other_1);
         CardView OtherMaps = (CardView)findViewById(R.id.card_view_other_2);
         assert ZapisCardPhone != null;
-        assert OtherCall != null;
+        assert OtherAbout != null;
         assert OtherMaps != null;
         ZapisCardPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Вы действительно хотите позвонить нам?")
-                        .setMessage("Мы работаем с 9:00 до 19:00")
-                        .setIcon(R.mipmap.ic_launcher)
+                        .setMessage("Мы работаем с 9:00 до 19:00" + '\n' + '\n' +
+                                "*Вызов производится на стационарный телефон")
+                        .setIcon(R.drawable.logo)
                         .setCancelable(true)
                         .setNegativeButton("Отмена",
                                 new DialogInterface.OnClickListener() {
@@ -112,40 +150,11 @@ public class MainActivity extends AppCompatActivity {
                 alert.show();
             }
         });
-        OtherCall.setOnClickListener(new View.OnClickListener() {
+        OtherAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Вы действительно хотите позвонить нам?")
-                        .setMessage("Мы работаем с 9:00 до 19:00")
-                        .setIcon(R.mipmap.ic_launcher)
-                        .setCancelable(true)
-                        .setNegativeButton("Отмена",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                })
-                        .setPositiveButton("Вызов",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                                            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                                                    Manifest.permission.CALL_PHONE)) {
-                                                //TODO: Пользователь - дибил
-                                            } else {
-                                                ActivityCompat.requestPermissions(MainActivity.this,
-                                                        new String[]{Manifest.permission.CALL_PHONE},
-                                                        0);
-                                            }
-                                        }else {
-                                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0612209872"));
-                                            startActivity(intent);
-                                        }
-                                    }
-                                });
-                AlertDialog alert = builder.create();
-                alert.show();
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -212,6 +221,11 @@ public class MainActivity extends AppCompatActivity {
             images[x].setImageBitmap(news.get(x).image);
             prices[x].setText(String.valueOf(news.get(x).price));
         }
+    }
+
+    public void openOthers(View v){
+        Intent intent = new Intent(this, OthersActivity.class);
+        startActivity(intent);
     }
 
     public void showExpandedActivity(View v){
@@ -335,5 +349,41 @@ public class MainActivity extends AppCompatActivity {
             setPreviewNews();
         }
 
+    }
+
+    private class QRCreationTask extends AsyncTask<Void, Void, Bitmap> {
+        Bitmap bmp;
+
+        protected Bitmap doInBackground(Void... urls) {
+            QRCodeWriter writer = new QRCodeWriter();
+            try {
+                BitMatrix bitMatrix = writer.encode(CLIENT_ID, BarcodeFormat.QR_CODE, 512, 512);
+                int width = bitMatrix.getWidth();
+                int height = bitMatrix.getHeight();
+                bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+                for (int x = 0; x < width; x++) {
+                    for (int y = 0; y < height; y++) {
+                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                    }
+                }
+
+
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                String filename = "qr.png";
+                FileOutputStream stream = openFileOutput(filename, Context.MODE_PRIVATE);
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                stream.close();
+                bmp.recycle();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return bmp;
+
+        }
     }
 }

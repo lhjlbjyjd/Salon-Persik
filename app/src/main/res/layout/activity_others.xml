@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:columnCount="2"
+    android:orientation="vertical"
+    tools:context="ua.rodionov.salonpersik.OthersActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <android.support.v7.widget.CardView
+            android:layout_height="150dp"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            card_view:cardCornerRadius="4dp"
+            android:id="@+id/phoneButton">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#52b4bd">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/phone"/>
+
+            </RelativeLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_height="150dp"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            card_view:cardCornerRadius="4dp"
+            android:id="@+id/mapButton">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#d81b61">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/map"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <android.support.v7.widget.CardView
+            android:layout_height="150dp"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            card_view:cardCornerRadius="4dp"
+            android:id="@+id/vkButton">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#507299">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/vk"/>
+
+            </RelativeLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_height="150dp"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            card_view:cardCornerRadius="4dp"
+            android:id="@+id/instButton">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#c2c2c2">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/instagram"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <android.support.v7.widget.CardView
+            android:layout_height="150dp"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            card_view:cardCornerRadius="4dp"
+            android:id="@+id/aboutButton">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#02ff67">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/about"/>
+
+            </RelativeLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v4.widget.Space
+            android:layout_height="150dp"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            card_view:cardCornerRadius="4dp">
+
+        </android.support.v4.widget.Space>
+
+    </LinearLayout>
+
+
+</LinearLayout>

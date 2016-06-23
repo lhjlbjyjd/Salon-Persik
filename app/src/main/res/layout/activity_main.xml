@@ -32,6 +32,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
+                        android:id="@+id/toolbar_title"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:text="@string/app_name"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:id="@+id/toolbar_coins"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/imageView2"
@@ -191,6 +202,27 @@
                                     android:src="@drawable/calendar_phone"
                                     android:scaleType="fitCenter" />
 
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:weightSum="1">
+
+                                    <android.support.v4.widget.Space
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="0.8"/>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="0.2"
+                                        android:gravity="center"
+                                        android:textStyle="bold"
+                                        android:text="По телефону"/>
+
+                                </LinearLayout>
+
                             </RelativeLayout>
 -->
                         </android.support.v7.widget.CardView>
@@ -217,6 +249,27 @@
                                     android:layout_height="match_parent"
                                     android:src="@drawable/calendar"
                                     android:scaleType="fitCenter"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:weightSum="1">
+
+                                    <android.support.v4.widget.Space
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="0.8"/>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="0.2"
+                                        android:gravity="center"
+                                        android:textStyle="bold"
+                                        android:text="Online"/>
+
+                                </LinearLayout>
 
                             </RelativeLayout>
 
@@ -253,7 +306,7 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ВСЁ"
+                        android:text="ВСЕ"
                         android:id="@+id/button_news"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
@@ -573,7 +626,7 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ВСЁ"
+                        android:text="ВСЕ"
                         android:id="@+id/button_service"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
@@ -637,6 +690,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ВСЕ"
+                        android:id="@+id/button_other"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_alignRight="@+id/textView3"
+                        android:layout_alignEnd="@+id/textView3"
+                        android:onClick="openOthers" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -661,7 +730,7 @@
                             android:id="@+id/card_view_other_1"
                             android:layout_height="150dp"
                             card_view:cardCornerRadius="4dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginBottom="10dp"
@@ -670,13 +739,35 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="#52b4bd">
+                                android:background="#02ff67">
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/phone"
-                                android:scaleType="fitCenter"/>
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/about"
+                                    android:scaleType="fitCenter"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:weightSum="1">
+
+                                    <android.support.v4.widget.Space
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="0.8"/>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="0.2"
+                                        android:gravity="center"
+                                        android:textStyle="bold"
+                                        android:textColor="#ffffff"
+                                        android:text="О нас"/>
+
+                                </LinearLayout>
 
                             </RelativeLayout>
 
@@ -688,7 +779,7 @@
                             android:id="@+id/card_view_other_2"
                             android:layout_height="150dp"
                             card_view:cardCornerRadius="4dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginLeft="5dp"
                             android:layout_marginBottom="10dp"
@@ -699,11 +790,33 @@
                                 android:layout_height="match_parent"
                                 android:background="#d81b61">
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/map"
-                                android:scaleType="fitCenter"/>
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/map"
+                                    android:scaleType="fitCenter"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:weightSum="1">
+
+                                    <android.support.v4.widget.Space
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="0.8"/>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="0.2"
+                                        android:gravity="center"
+                                        android:textStyle="bold"
+                                        android:textColor="#ffffff"
+                                        android:text="Мы на карте"/>
+
+                                </LinearLayout>
 
                             </RelativeLayout>
 
