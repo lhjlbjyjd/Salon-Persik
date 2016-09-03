@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -39,7 +39,7 @@
                         android:text="@string/app_name"
                         android:textSize="20dp" />
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -47,7 +47,8 @@
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/imageView2"
                         android:layout_toStartOf="@+id/imageView2"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:text="Нет данных"/>
 
                     <ImageView
                         android:layout_width="25dp"
@@ -82,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -128,7 +129,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.45">
 
-                                <TextView
+                                <TextView android:textColor="#fff"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -147,7 +148,7 @@
 
                     </android.support.v7.widget.CardView>
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:id="@+id/info_text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -161,7 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -200,7 +201,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:src="@drawable/calendar_phone"
-                                    android:scaleType="fitCenter" />
+                                    android:scaleType="centerCrop" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -213,12 +214,13 @@
                                         android:layout_height="0dp"
                                         android:layout_weight="0.8"/>
 
-                                    <TextView
+                                    <TextView android:textColor="#fff"
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         android:layout_weight="0.2"
                                         android:gravity="center"
                                         android:textStyle="bold"
+                                        style="@style/AboutText"
                                         android:text="По телефону"/>
 
                                 </LinearLayout>
@@ -248,7 +250,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:src="@drawable/calendar"
-                                    android:scaleType="fitCenter"/>
+                                    android:scaleType="centerCrop"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -261,12 +263,13 @@
                                         android:layout_height="0dp"
                                         android:layout_weight="0.8"/>
 
-                                    <TextView
+                                    <TextView android:textColor="#fff"
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         android:layout_weight="0.2"
                                         android:gravity="center"
                                         android:textStyle="bold"
+                                        style="@style/AboutText"
                                         android:text="Online"/>
 
                                 </LinearLayout>
@@ -277,7 +280,7 @@
 
                     </LinearLayout>
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:id="@+id/info_text0"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -287,11 +290,17 @@
 
                 </RelativeLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/onlineBlock">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -305,16 +314,17 @@
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ВСЕ"
+                        android:text="ВСЁ"
                         android:id="@+id/button_news"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="5dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/rounded_corner"
                         android:layout_alignRight="@+id/info_text1"
                         android:layout_alignEnd="@+id/info_text1"
                         android:onClick="showExpandedActivity" />
@@ -343,7 +353,7 @@
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentEnd="true"
                                 android:id="@+id/image_news_1"
-                                android:scaleType="fitXY" />
+                                android:scaleType="centerCrop" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -360,7 +370,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginBottom="5dp">
 
-                                    <TextView
+                                    <TextView android:textColor="#fff"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:id="@+id/coins_news_1"
@@ -396,7 +406,7 @@
                                     android:layout_height="0dp"
                                     android:layout_weight="0.7"/>
 
-                                <TextView
+                                <TextView android:textColor="#fff"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="0.3"
@@ -456,7 +466,7 @@
                                         android:layout_marginLeft="5dp"
                                         android:layout_marginBottom="5dp">
 
-                                        <TextView
+                                        <TextView android:textColor="#fff"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/coins_news_2"
@@ -493,7 +503,7 @@
                                         android:layout_weight="0.7"
                                         android:scaleType="centerCrop" />
 
-                                    <TextView
+                                    <TextView android:textColor="#fff"
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         android:layout_weight="0.3"
@@ -528,6 +538,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_alignParentRight="true"
                                     android:layout_alignParentEnd="true"
+                                    android:scaleType="centerCrop"
                                     android:id="@+id/image_news_3" />
 
                                 <LinearLayout
@@ -545,7 +556,7 @@
                                         android:layout_marginLeft="5dp"
                                         android:layout_marginBottom="5dp">
 
-                                        <TextView
+                                        <TextView android:textColor="#fff"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/coins_news_3"
@@ -581,7 +592,7 @@
                                         android:layout_height="0dp"
                                         android:layout_weight="0.7"/>
 
-                                    <TextView
+                                    <TextView android:textColor="#fff"
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         android:layout_weight="0.3"
@@ -597,7 +608,7 @@
 
                     </LinearLayout>
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:id="@+id/info_text1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -611,7 +622,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -625,16 +636,17 @@
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ВСЕ"
+                        android:text="ВСЁ"
                         android:id="@+id/button_service"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="5dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/rounded_corner"
                         android:layout_alignRight="@id/textView_service"
                         android:layout_alignEnd="@id/textView_service"
                         android:onClick="showExpandedActivity" />
@@ -686,27 +698,30 @@
 
                 </RelativeLayout>
 
+                </LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ВСЕ"
+                        android:text="ВСЁ"
                         android:id="@+id/button_other"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="5dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/rounded_corner"
                         android:layout_alignRight="@+id/textView3"
                         android:layout_alignEnd="@+id/textView3"
                         android:onClick="openOthers" />
 
-                    <TextView
+                    <TextView android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -745,7 +760,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:src="@drawable/about"
-                                    android:scaleType="fitCenter"/>
+                                    android:scaleType="centerCrop"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -794,7 +809,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:src="@drawable/map"
-                                    android:scaleType="fitCenter"/>
+                                    android:scaleType="centerCrop"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -807,13 +822,13 @@
                                         android:layout_height="0dp"
                                         android:layout_weight="0.8"/>
 
-                                    <TextView
+                                    <TextView android:textColor="#fff"
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         android:layout_weight="0.2"
                                         android:gravity="center"
                                         android:textStyle="bold"
-                                        android:textColor="#ffffff"
+                                        style="@style/AboutText"
                                         android:text="Мы на карте"/>
 
                                 </LinearLayout>

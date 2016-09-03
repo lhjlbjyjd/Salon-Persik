@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:background="#52b4bd">
 
-                <ImageView
+                <ImageView android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/phone"/>
@@ -51,7 +51,7 @@
                 android:layout_height="match_parent"
                 android:background="#d81b61">
 
-            <ImageView
+            <ImageView android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/map"/>
@@ -81,7 +81,7 @@
                 android:layout_height="match_parent"
                 android:background="#507299">
 
-                <ImageView
+                <ImageView android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/vk"/>
@@ -105,7 +105,7 @@
                 android:layout_height="match_parent"
                 android:background="#c2c2c2">
 
-            <ImageView
+            <ImageView android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/instagram"/>
@@ -135,7 +135,7 @@
                 android:layout_height="match_parent"
                 android:background="#02ff67">
 
-                <ImageView
+                <ImageView android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/about"/>

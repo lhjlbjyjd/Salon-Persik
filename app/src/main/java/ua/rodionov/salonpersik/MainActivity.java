@@ -9,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -51,7 +53,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private String CLIENT_ID;
-    private boolean new_user;
+    private boolean new_user = false;
     private ArrayList<News> news = new ArrayList<>();
     private int coins;
     private int newsCount;
@@ -92,7 +94,25 @@ public class MainActivity extends AppCompatActivity {
             alert.show();
         }
 
-        new GetUserData().execute();
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        boolean isConnected;
+
+        if(activeNetwork != null){
+            isConnected = activeNetwork.isConnectedOrConnecting();
+        }else{
+            isConnected = false;
+        }
+
+        if(isConnected) {
+            new GetUserData().execute();
+            new GetNewsTask().execute();
+        }else{
+            findViewById(R.id.onlineBlock).setVisibility(View.GONE);
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -175,8 +195,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        new GetNewsTask().execute();
     }
 
     public void setUserData(){
